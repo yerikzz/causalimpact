@@ -1,6 +1,16 @@
 # app.py
 import streamlit as st
 import pandas as pd
+try:
+    import pandas.core.dtypes.common as _pdt
+    if not hasattr(_pdt, "is_datetime_or_timedelta_dtype"):
+        def is_datetime_or_timedelta_dtype(arr):
+            return _pdt.is_datetime64_any_dtype(arr) or _pdt.is_timedelta64_dtype(arr)
+        _pdt.is_datetime_or_timedelta_dtype = is_datetime_or_timedelta_dtype
+except Exception:
+    # 若无法 patch（例如 pandas 内部接口变动极大），则忽略，让后续导入显示真实错误
+    pass
+
 import numpy as np
 import matplotlib.pyplot as plt
 from io import BytesIO, StringIO
