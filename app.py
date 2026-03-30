@@ -123,7 +123,7 @@ with st.sidebar:
 
     if not causalimpact_available:
         st.error("警告：应用无法导入 causalimpact。若部署失败，可能是该包依赖 R / rpy2 等系统组件，Streamlit Community Cloud 无法安装。错误信息（简略）:")
-        st.text(causalimpact_import_error)
+        st.code(f"{type(causalimpact_import_error)}: {causalimpact_import_error}")
         st.markdown("建议：若需要安装 R/rpy2，请使用 Docker 部署（Render / Cloud Run 等）。")
 
     if file is not None:
