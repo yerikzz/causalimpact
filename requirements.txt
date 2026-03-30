@@ -2,6 +2,6 @@ streamlit
 pandas
 numpy
 matplotlib
+scikit-learn
 openpyxl
 python-dateutil
-causalimpact==0.2.6
